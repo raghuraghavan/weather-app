@@ -1,0 +1,32 @@
+{
+  "name": "weather-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/prop-types": "^15.5.3",
+    "axios": "^0.18.0",
+    "beaufort-scale": "^1.0.3",
+    "locale2": "^2.2.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-html-parser": "^2.0.2",
+    "react-scripts": "1.1.4",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.0",
+    "weather-icons-tmp": "^0.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0"
+  }
+}
