@@ -1,15 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Container } from 'semantic-ui-react';
+import './index.css';
 
-class App extends Component {
+import Header from './components/header';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+      <div>
+        <header>
+          <Header />
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main>
+          <Container text>
+            <div className="page-content-container" />
+            <h1>
+              Hello World!
+            </h1>
+          </Container>
+        </main>
       </div>
     );
   }
