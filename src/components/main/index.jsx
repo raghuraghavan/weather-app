@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 // Components
 import SiteTitle from '../site-title';
+import Weather from '../weather';
 
 const Main = () => (
   <Grid textAlign="center" verticalAlign="middle" columns="equal">
@@ -12,9 +13,7 @@ const Main = () => (
     <Grid.Column>
 
       <Segment>
-        <h1>
-          Hello World!
-        </h1>
+        <Weather />
       </Segment>
 
     </Grid.Column>
