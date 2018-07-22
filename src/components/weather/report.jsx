@@ -16,7 +16,7 @@ import locale2 from 'locale2';
 // import ForecastRowRisesAndSets from './forecast-row-rises-and-sets';
 // import ForecastRowTemperatures from './forecast-row-temperatures';
 import GridResponsiveLocationData from './grid-responsive-location-data';
-// import RowMiscellaneous from './row-miscellaneous';
+import RowMiscellaneous from './row-miscellaneous';
 import RowSunMoon from './row-sun-moon';
 import RowWind from './row-wind';
 // Custom Code
@@ -68,6 +68,7 @@ class WeatherReport extends React.Component {
     const { current, forecast, location } = this.props || {};
     let isDay = true;
     let nCondition = '';
+    let currentMiscellaneous = {};
     let currentWind = {};
     let forecastCurrentDay = {};
 
@@ -76,6 +77,8 @@ class WeatherReport extends React.Component {
         isDay = false;
       }
       nCondition = current.condition.code;
+      currentMiscellaneous = getCurrentMiscellaneous(current,
+        currentUnitType, sUnit, forecast.forecastday[0].day.uv);
       currentWind = getCurrentWind(current, currentUnitType, sUnit);
       forecastCurrentDay = getForecastCurrentDay(forecast.forecastday[0], forecastUnitType, sUnit);
     }
@@ -185,6 +188,26 @@ class WeatherReport extends React.Component {
                   wind={currentWind}
                   columns={4}
                 />
+              </Grid.Column>
+            </Grid.Row>
+
+            <Divider />
+
+            <Grid.Row className="compacted-row">
+              <Grid.Column>
+                <Responsive maxWidth={375}>
+                  <RowMiscellaneous
+                    misc={currentMiscellaneous}
+                    columns={2}
+                  />
+                </Responsive>
+
+                <Responsive minWidth={376}>
+                  <RowMiscellaneous
+                    misc={currentMiscellaneous}
+                    columns={4}
+                  />
+                </Responsive>
               </Grid.Column>
             </Grid.Row>
           </Grid>
