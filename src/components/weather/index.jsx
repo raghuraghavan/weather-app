@@ -1,7 +1,11 @@
 import React from 'react';
+import { Dimmer, Loader } from 'semantic-ui-react';
+// Local Components
+import ErrorReport from './error';
+import WeatherReport from './report';
 // Engine
 import { getData, myLocation } from '../../engine';
-import { objectHasProperty } from '../../engine/tools';
+import { objectHasProperty, isObjectEmpty } from '../../engine/tools';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -30,12 +34,16 @@ class Weather extends React.Component {
 
   render() {
     const obj = this.state;
-    console.log('Data Object', obj);
+    const isEmpty = isObjectEmpty(obj);
+    const isError = objectHasProperty(obj, 'error');
 
     return (
-      <h1>
-        Hello World!
-      </h1>
+      <div>
+        <Dimmer active={isEmpty} inverted>
+          <Loader inverted />
+        </Dimmer>
+        {isError ? <ErrorReport {...obj} /> : <WeatherReport {...obj} />}
+      </div>
     );
   }
 }
