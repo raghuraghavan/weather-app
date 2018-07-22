@@ -17,7 +17,7 @@ import locale2 from 'locale2';
 // import ForecastRowTemperatures from './forecast-row-temperatures';
 import GridResponsiveLocationData from './grid-responsive-location-data';
 // import RowMiscellaneous from './row-miscellaneous';
-// import RowSunMoon from './row-sun-moon';
+import RowSunMoon from './row-sun-moon';
 // import RowWind from './row-wind';
 // Custom Code
 import {
@@ -150,6 +150,30 @@ class WeatherReport extends React.Component {
             </Grid.Row>
 
             <Divider />
+
+            <Grid.Row className="compacted-row">
+              <Grid.Column>
+                <Responsive maxWidth={375}>
+                  <RowSunMoon
+                    sunrise={forecastCurrentDay.sun.rise}
+                    sunset={forecastCurrentDay.sun.set}
+                    moonrise={forecastCurrentDay.moon.rise}
+                    moonset={forecastCurrentDay.moon.set}
+                    columns={2}
+                  />
+                </Responsive>
+
+                <Responsive minWidth={376}>
+                  <RowSunMoon
+                    sunrise={forecastCurrentDay.sun.rise}
+                    sunset={forecastCurrentDay.sun.set}
+                    moonrise={forecastCurrentDay.moon.rise}
+                    moonset={forecastCurrentDay.moon.set}
+                    columns={4}
+                  />
+                </Responsive>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         )}
       </div>
