@@ -15,7 +15,7 @@ import locale2 from 'locale2';
 // import ForecastRowIcons from './forecast-row-icons';
 // import ForecastRowRisesAndSets from './forecast-row-rises-and-sets';
 // import ForecastRowTemperatures from './forecast-row-temperatures';
-// import GridResponsiveLocationData from './grid-responsive-location-data';
+import GridResponsiveLocationData from './grid-responsive-location-data';
 // import RowMiscellaneous from './row-miscellaneous';
 // import RowSunMoon from './row-sun-moon';
 // import RowWind from './row-wind';
@@ -118,6 +118,33 @@ class WeatherReport extends React.Component {
                   </Statistic>
 
                 </Header>
+
+                <br />
+
+                <Responsive maxWidth={375}>
+                  <GridResponsiveLocationData
+                    columns={1}
+                    minimum={forecastCurrentDay.temperature.minimum}
+                    feelsLike={current[currentUnitType[sUnit].temperature.feelsLike]}
+                    maximum={forecastCurrentDay.temperature.maximum}
+                    unit={currentUnitType[sUnit].temperature.unit}
+                    name={location.name}
+                    region={location.region}
+                    country={location.country}
+                  />
+                </Responsive>
+                <Responsive minWidth={376}>
+                  <GridResponsiveLocationData
+                    columns={3}
+                    minimum={forecastCurrentDay.temperature.minimum}
+                    feelsLike={current[currentUnitType[sUnit].temperature.feelsLike]}
+                    maximum={forecastCurrentDay.temperature.maximum}
+                    unit={currentUnitType[sUnit].temperature.unit}
+                    name={location.name}
+                    region={location.region}
+                    country={location.country}
+                  />
+                </Responsive>
 
               </Grid.Column>
             </Grid.Row>
