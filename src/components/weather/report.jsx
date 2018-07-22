@@ -11,7 +11,7 @@ import {
 import locale2 from 'locale2';
 // Sibling Components
 // import ControlUnits from './control-units';
-// import ForecastRowDayNames from './forecast-row-day-names';
+import ForecastRowDayNames from './forecast-row-day-names';
 // import ForecastRowIcons from './forecast-row-icons';
 // import ForecastRowRisesAndSets from './forecast-row-rises-and-sets';
 // import ForecastRowTemperatures from './forecast-row-temperatures';
@@ -68,9 +68,13 @@ class WeatherReport extends React.Component {
     const { current, forecast, location } = this.props || {};
     let isDay = true;
     let nCondition = '';
+    // Current Day Data from Apixu Current Data
     let currentMiscellaneous = {};
     let currentWind = {};
+    // Current Day Data from Apixu Forecast Data
     let forecastCurrentDay = {};
+    // Forecast Data from Apixu Forecast Data
+    let forecastRowDayNames = {};
 
     if (!isEmpty) {
       if (current[currentUnitType.other.isDay] === 0) {
@@ -81,6 +85,7 @@ class WeatherReport extends React.Component {
         currentUnitType, sUnit, forecast.forecastday[0].day.uv);
       currentWind = getCurrentWind(current, currentUnitType, sUnit);
       forecastCurrentDay = getForecastCurrentDay(forecast.forecastday[0], forecastUnitType, sUnit);
+      forecastRowDayNames = getForecastRowDayNames(forecast.forecastday);
     }
 
     return (
@@ -225,6 +230,10 @@ class WeatherReport extends React.Component {
                 </Header>
               </Grid.Column>
             </Grid.Row>
+
+            <Grid celled textAlign="center">
+              <ForecastRowDayNames values={forecastRowDayNames} />
+            </Grid>
           </Grid>
         )}
       </div>
