@@ -210,6 +210,21 @@ class WeatherReport extends React.Component {
                 </Responsive>
               </Grid.Column>
             </Grid.Row>
+
+            <Divider />
+
+            <Grid.Row>
+              <Grid.Column>
+                <br />
+                <Header>
+                  The Days Ahead
+                  {' '}
+                  <Icon
+                    name="arrow alternate circle right outline"
+                  />
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         )}
       </div>
