@@ -34,7 +34,7 @@ const returnValidState = (oState) => {
       isValid = false;
     }
 
-    if (email !== '' && !ValidateEmail(email)) {
+    if (email !== '' && !validateEmail(email)) {
       newState = {
         ...newState,
         feedback: {
