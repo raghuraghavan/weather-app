@@ -10,7 +10,7 @@ import {
 // External Libraries
 import locale2 from 'locale2';
 // Sibling Components
-// import ControlUnits from './control-units';
+import ControlUnits from './control-units';
 import ForecastRowDayNames from './forecast-row-day-names';
 import ForecastRowIcons from './forecast-row-icons';
 import ForecastRowRisesAndSets from './forecast-row-rises-and-sets';
@@ -53,6 +53,15 @@ class WeatherReport extends React.Component {
       activeUnit: true,
       defaultUnit: isBrowserMetric ? 'metric' : 'imperial',
     };
+  }
+
+  changeMeasurementType(event) {
+    event.preventDefault();
+
+    this.setState(previousState => ({
+      ...previousState,
+      activeUnit: !previousState.activeUnit,
+    }));
   }
 
   render() {
@@ -131,6 +140,13 @@ class WeatherReport extends React.Component {
                   <Statistic size="huge">
                     <Statistic.Value>
                       {current[currentUnitType[sUnit].temperature.actual]}
+                      {' '}
+                      <ControlUnits
+                        defaultUnit={defaultUnit === 'metric' ? currentUnitType.metric.temperature.unit : currentUnitType.imperial.temperature.unit}
+                        definedUnit={defaultUnit === 'metric' ? currentUnitType.imperial.temperature.unit : currentUnitType.metric.temperature.unit}
+                        activeUnit={activeUnit}
+                        changeType={event => this.changeMeasurementType(event)}
+                      />
                     </Statistic.Value>
                   </Statistic>
 
