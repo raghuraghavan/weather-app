@@ -5,6 +5,7 @@ import './index.css';
 import Footer from './components/footer';
 import Header from './components/header';
 import Main from './components/main';
+import SupportForm from './components/support-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { page: sPage } = this.state;
+
     return (
       <div>
         <header>
@@ -34,7 +37,14 @@ class App extends React.Component {
         </header>
         <main>
           <Container text>
-            <Main />
+            {sPage === 'weather' && (
+              <Main />
+            )}
+            {sPage === 'support' && (
+              <SupportForm
+                changeThePage={(event, sType) => this.changePage(event, sType)}
+              />
+            )}
           </Container>
         </main>
         <footer>
