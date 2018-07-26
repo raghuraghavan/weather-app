@@ -19,5 +19,8 @@ It uses:
 You can find a deployed version of this project here:
 [https://weather.creatureoftech.com](https://weather.creatureoftech.com)
 
+You can find the book here:
+[ReactJS with a Weather API](https://www.amazon.com.au/dp/B07FVY8KF3)
+
 License for Code:
  - MIT Licence
